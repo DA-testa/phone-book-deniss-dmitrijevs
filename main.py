@@ -47,10 +47,10 @@ def write_responses(result):
 def process_queries(queries):
     result = []
     # Keep list of all existing (i.e. not deleted yet) contacts.
-    contacts = new HashArray(10000);
+    contacts = HashArray(10000);
     for cur_query in queries:
         if cur_query.type == 'add':
-            contacts.add_obj(key: cur_query.number, value: cur_query.name)
+            contacts.add_obj(key = cur_query.number, value = cur_query.name)
             # if we already have contact with such number,
             # we should rewrite contact's name
             # for contact in contacts:
@@ -60,14 +60,14 @@ def process_queries(queries):
             # else: # otherwise, just add it
             #     contacts.append(cur_query)
         elif cur_query.type == 'del':
-            contacts.del_obj(key: cur_query.number, value: cur_query.name)
+            contacts.del_obj(key = cur_query.number, value = cur_query.name)
             # for j in range(len(contacts)):
             #     if contacts[j].number == cur_query.number:
             #         contacts.pop(j)
             #         break
         else:
             response = 'not found'
-            contact_name = contacts.find_obj(key)
+            contact_name = contacts.get_obj(key)
             # for contact in contacts:
             #     if contact.number == cur_query.number:
             #         response = contact.name
