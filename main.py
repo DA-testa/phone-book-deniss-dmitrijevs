@@ -72,7 +72,7 @@ def process_queries(queries):
             #     if contact.number == cur_query.number:
             #         response = contact.name
             #         break
-            if contact is not None:
+            if contact_name is not None:
                 response = contact_name
             result.append(response)
     return result
