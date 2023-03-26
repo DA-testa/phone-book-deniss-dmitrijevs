@@ -60,7 +60,7 @@ def process_queries(queries):
             # else: # otherwise, just add it
             #     contacts.append(cur_query)
         elif cur_query.type == 'del':
-            contacts.del_obj(key = cur_query.number, value = cur_query.name)
+            contacts.del_obj(key = cur_query.number
             # for j in range(len(contacts)):
             #     if contacts[j].number == cur_query.number:
             #         contacts.pop(j)
