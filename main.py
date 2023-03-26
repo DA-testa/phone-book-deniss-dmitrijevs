@@ -14,7 +14,7 @@ class HashArray:
         self.array = [None] * size
     
     def get_hash(self, key):
-        return key * self.__hash_multiplier + self.__hash_term  % self.size
+        return (key * self.__hash_multiplier + self.__hash_term)  % self.size
     
     def get_obj(self, key):
         return self.array[self.get_hash(key)]
@@ -67,7 +67,7 @@ def process_queries(queries):
             #         break
         else:
             response = 'not found'
-            contact_name = contacts.get_obj(key)
+            contact_name = contacts.get_obj(cur_query.number)
             # for contact in contacts:
             #     if contact.number == cur_query.number:
             #         response = contact.name
