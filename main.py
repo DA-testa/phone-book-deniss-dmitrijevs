@@ -53,14 +53,11 @@ def process_queries(queries):
         if cur_query.type == 'add':
             contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
-            contacts.pop(cur_query.number)
+            if cur_query.number in contacts:
+                contacts.pop(cur_query.number)
         else:
             response = 'not found'
             contact_name = contacts.get(cur_query.number, None)
-            # for contact in contacts:
-            #     if contact.number == cur_query.number:
-            #         response = contact.name
-            #         break
             if contact_name is not None:
                 response = contact_name
             result.append(response)
