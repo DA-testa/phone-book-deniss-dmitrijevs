@@ -1,6 +1,7 @@
 #221RDB322 Deņiss Dmitrijevs
 
 # python3
+#class is substitued by python dict
 class HashArray:
     #telephone numbers acts as hash keys, no need to handle collisions
     __hash_multiplier = 1
@@ -47,27 +48,15 @@ def write_responses(result):
 def process_queries(queries):
     result = []
     # Keep list of all existing (i.e. not deleted yet) contacts.
-    contacts = HashArray(10000);
+    contacts = {}
     for cur_query in queries:
         if cur_query.type == 'add':
-            contacts.add_obj(key = cur_query.number, value = cur_query.name)
-            # if we already have contact with such number,
-            # we should rewrite contact's name
-            # for contact in contacts:
-            #     if contact.number == cur_query.number:
-            #         contact.name = cur_query.name
-            #         break
-            # else: # otherwise, just add it
-            #     contacts.append(cur_query)
+            contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
-            contacts.del_obj(key = cur_query.number)
-            # for j in range(len(contacts)):
-            #     if contacts[j].number == cur_query.number:
-            #         contacts.pop(j)
-            #         break
+            contacts.pop(cur_query.number)
         else:
             response = 'not found'
-            contact_name = contacts.get_obj(cur_query.number)
+            contact_name = contacts[cur_query.number]
             # for contact in contacts:
             #     if contact.number == cur_query.number:
             #         response = contact.name
